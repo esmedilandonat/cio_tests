@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer.io In-App Message Test (CDP)</title>
+
+    <!-- PASTE YOUR CUSTOMER.IO CDP SNIPPET HERE -->
+
+</head>
+
+<body>
+    <h1>Customer.io In-App Message Test (CDP Version)</h1>
+
+    <script>
+        // Wait for analytics to be ready
+        analytics.ready(function () {
+            console.log("Analytics ready, identifying user...");
+
+            analytics.identify('test_user_cdp_001', {
+                email: 'test_user_cdp_001@example.com',
+                firstName: 'Test',
+                plan: 'premium'
+            });
+
+            analytics.track('test_event_triggered', {
+                test_prop: 'value'
+            });
+
+            console.log("Simulated user identified via Analytics API");
+        });
+    </script>
+</body>
+
+</html>
