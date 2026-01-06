@@ -17,6 +17,20 @@
         }();
     </script>
 
+    <!-- Customer.io Forms Snippet -->
+    <script type="text/javascript">
+        (function () {
+            var t = document.createElement('script'),
+                s = document.getElementsByTagName('script')[0];
+            t.async = true;
+            t.id = 'cio-forms-handler';
+            t.setAttribute('data-site-id', '0cbd8d3983f934873e8a');
+            t.setAttribute('data-base-url', 'https://eu.customerioforms.com');
+            t.src = 'https://eu.customerioforms.com/assets/forms.js';
+            s.parentNode.insertBefore(t, s);
+        })();
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -125,24 +139,30 @@
 
         // Handle form submission
         document.getElementById('contact-form').addEventListener('submit', function (event) {
-            // Prevent default page reload
-            event.preventDefault();
+            try {
+                // Prevent default page reload
+                event.preventDefault();
 
-            // Get values from the form inputs
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+                // Get values from the form inputs
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
 
-            // Call analytics.identify using email as ID
-            analytics.identify(email, { name: name, email: email });
+                // Call analytics.identify using email as ID (crucial for In-App messaging)
+                analytics.identify(email, { name: name, email: email });
 
-            // Call analytics.track to track the form submission
-            analytics.track('form_submitted', { name: name });
+                // Note: analytics.track() removed - Forms snippet handles automatic tracking
 
-            // Show success alert
-            alert('Data sent to Customer.io!');
+                // Show success alert
+                alert('Data sent to Customer.io!');
 
-            // Optional: Clear the form
-            this.reset();
+                // Optional: Clear the form
+                this.reset();
+
+                // Success log
+                console.log("Success: User identified and form data handed off to Customer.io auto-collector.");
+            } catch (error) {
+                console.error("Error processing form:", error);
+            }
         });
     </script>
 </body>
