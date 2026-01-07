@@ -186,12 +186,11 @@
     <!-- Exit Intent Popup Script -->
     <script src="exit_intent.js"></script>
     <script>
-        // Initialize exit intent popup
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
             new ExitIntentPopup({
-                identifier: 'contact',
-                header: 'Wait! Don\'t Miss Out!',
-                buttonText: 'Get My Quotes'
+                identifier: 'customerio-exit',
+                header: "Wait! Don't miss out.",
+                buttonText: "Get My Quotes"
             });
         });
     </script>
