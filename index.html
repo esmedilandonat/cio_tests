@@ -46,6 +46,8 @@
         });
     </script>
 
+    <link rel="stylesheet" href="exit_intent.css">
+
     <style>
         * {
             margin: 0;
@@ -178,6 +180,19 @@
             } catch (error) {
                 console.error("Error processing form:", error);
             }
+        });
+    </script>
+
+    <!-- Exit Intent Popup Script -->
+    <script src="exit_intent.js"></script>
+    <script>
+        // Initialize exit intent popup
+        document.addEventListener('DOMContentLoaded', function () {
+            new ExitIntentPopup({
+                identifier: 'contact',
+                header: 'Wait! Don\'t Miss Out!',
+                buttonText: 'Get My Quotes'
+            });
         });
     </script>
 </body>
